@@ -1,5 +1,4 @@
 #include <stdio.h>
-//Lab 2, Esercizio 1
 
 int num;
 
