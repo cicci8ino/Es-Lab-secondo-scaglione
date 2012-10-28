@@ -28,7 +28,7 @@ int main() {
 		      a=((a+b)/2);
 		      direzione='d';
 		   }
-		   printf("non trovato; cerco a %cx\n", direzione);  //sx (se la variabile char direzione è = 's' o dx se uguale a 'd'
+		   printf("non trovato; cerco a %cx\n", direzione);  //sx se la variabile char direzione è = 's' o dx se uguale a 'd'
 		   counter++;
 		   }
 		}	
