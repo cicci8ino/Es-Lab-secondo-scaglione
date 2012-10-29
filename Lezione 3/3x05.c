@@ -1,12 +1,13 @@
 #include <stdio.h>
 #define COST 10
+//definisco costante superiore
 
 int x=1, numero=0, contatore=0, somma=0;
 char operando;  //stampa '+' o '='
 
 int main() {
 	
-	while (x<=10) {  //itero da quando x=1 a x=10
+	while (x<=COST) {  //itero da quando x=1 a x=COST
 	   printf("X=%d", x);
 	
 	   if (x%2==0)    //stampa pari o dispari
