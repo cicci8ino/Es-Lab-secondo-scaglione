@@ -3,7 +3,6 @@
 //definisco costante superiore
 
 int x=1, numero=0, contatore=0, somma=0;
-char operando;  //stampa '+' o '='
 
 int main() {
 	
@@ -20,10 +19,9 @@ int main() {
 	   while (contatore<7) {  //contatore per calcolare i 7 numeri successivi
 		   printf(" %d ", numero);  //stampo tutti i numeri
 		   if (contatore<6)  //l'ultimo simbolo che dovrà stampare è '='. fino ad allora stampa '+'
-		      operando='+';
+		      printf("+");
 		   else
-		      operando='=';
-		   printf("%c", operando);
+		      printf("=");
 		   numero=numero+2;  //incremento di due il numero
 		   somma=somma+numero;  //incremento di un valore numero la somma
 		   contatore++;  //incremento contatore
