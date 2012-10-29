@@ -14,7 +14,7 @@ int main() {
 	      pari++;
 	   else
 	      dispari++;
-	   if (pari+dispari==1)
+	   if (pari+dispari==1)  //se ho inserito solo un numero il termine sarà al singolare, altrimenti sarà "numeri"
 	      singplur='o';
 	   else
 	      singplur='i';
