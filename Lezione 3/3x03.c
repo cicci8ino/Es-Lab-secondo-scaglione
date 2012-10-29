@@ -11,7 +11,7 @@ int main() {
 	      countersimbolo++;  //incrementa ogni volta che stampa un simbolo
 	   }
 	   printf("*");  //stampa asterisco
-	   while (DIM-countersimbolo!=0) {
+	   while (DIM-countersimbolo-1!=0) {  //devo considerare la stampa dell'asterisco
 	      printf("+");
 	      countersimbolo++;
 	   }
