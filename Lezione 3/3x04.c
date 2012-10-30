@@ -8,7 +8,9 @@ char singplur;
 int main() {
 	
 	   srand(time(NULL));
-	while ((pari+dispari==10 && pari-2>=dispari) || pari+dispari<20) {
+	while ((pari+dispari<=10 || pari-dispari<2) && pari+dispari<20) {
+          //cade appena una delle due condizioni cade
+          //la prima sfrutta le leggi della logica: not(a&b)=not a || not b
 	   num=rand()%100;
 	   if (num%2==0)  //il numero è pari o dispari?
 	      pari++;
