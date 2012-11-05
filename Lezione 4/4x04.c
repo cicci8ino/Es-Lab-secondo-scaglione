@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <strings.h>
-#define DIM 10
+#define DIM 10 //costanti blabla
 #define MAX 22
 
 int eta=0;
-short int i, counter1=0, counter2=0, c=2;  
+short int i, counter1=0, counter2=0, c=2;  //ho bisogno di due contatori se voglio mettere tutto in un ciclo (linea 44)
 typedef struct {
         char nome[50];
-        int eta; //ho un riferimento. so quando devo fermare il ciclo di inserimento
+        int eta; //eta inizializzata a 0. se rimane 0 significa che in quella posizione il mio vettore è vuoto
         char sesso;
         } s_anagr;
         
@@ -15,7 +15,7 @@ s_anagr v_anagr[DIM];
 s_anagr v_finale[MAX]; 
 
 int main () {
-    
+   //lasciate perdere gli scleri... volevo provare se funzionava o meno! 
    strcpy(v_anagr[0].nome, "Topolino");
    v_anagr[0].eta=47;
    v_anagr[0].sesso='M';
@@ -39,18 +39,20 @@ int main () {
    v_anagr[6].sesso='M';
    strcpy(v_anagr[7].nome, "Stoccafisso");
    v_anagr[7].eta=30;
-   v_anagr[7].sesso='M';   
+   v_anagr[7].sesso='M';
+   
    //riempimento cella 0 
-   for (i=0; v_anagr[i].eta!=0; i++) { //controllo se l'et‡ sia diversa da 0
-      if (v_anagr[i].sesso=='M') {
-         if (counter1==0 || v_finale[0].eta>v_anagr[i].eta) {
-            v_finale[0].eta=v_anagr[i].eta;
-            strcpy(v_finale[0].nome, v_anagr[i].nome);
-            v_finale[0].sesso='M';
-            counter1=1;
+   for (i=0; v_anagr[i].eta!=0; i++) { //controllo se l'eta sia diversa da 0
+      if (v_anagr[i].sesso=='M') {  //primo if= è maschio?
+         if (counter1==0 || v_finale[0].eta>v_anagr[i].eta) { //o ancora non ho iterato o l'eta che ho nel mio vettore è > dell'eta che sto leggendo
+            v_finale[0].eta=v_anagr[i].eta;  //sostituisco l'eta
+            strcpy(v_finale[0].nome, v_anagr[i].nome);  //nome
+            v_finale[0].sesso='M';  //e sesso (automaticamente maschila per la prima cella
+            counter1=1;  //prima iterazione eseguita. ora nell'if a linea 16 controllerà soltanto la seconda condizione, ovvero: il valore che sto leggendo dalla struttura v_anagr è più piccolo di quello che io ho messo in v_finale? (si ricordi che sto cercando il valore più piccolo)
          }
-      }      
-      if (v_anagr[i].sesso=='F') {           
+      }
+      //riempimento cella 2
+      if (v_anagr[i].sesso=='F') {  //secondo if= è femmina?          
          if (counter2==0 || v_finale[1].eta>v_anagr[i].eta) {
             v_finale[1].eta=v_anagr[i].eta;
             strcpy(v_finale[1].nome, v_anagr[i].nome);
@@ -62,13 +64,14 @@ int main () {
    //stampa celle
    printf("Cella 0: %s, %c, %d (maschio piu giovane)\n", v_finale[0].nome, v_finale[0].sesso, v_finale[0].eta);
    printf("Cella 1: %s, %c, %d (femmina piu giovane)\n", v_finale[1].nome, v_finale[1].sesso, v_finale[1].eta);
-   for (i=0; i<MAX; i++) {  
-      if (v_anagr[i].eta>=25 &&  v_anagr[i].sesso=='M') {
-         v_finale[i].eta=v_anagr[i].eta;
-         strcpy(v_finale[i].nome, v_anagr[i].nome);
-         v_finale[i].sesso='M';
-         printf("Cella %d: %s, %c, %d (maschi con piu di 25 anni)\n", c, v_finale[i].nome, v_finale[i].sesso, v_finale[i].eta);
-         c++;
+   //riempimento e stampa delle celle dalla 2 in poi
+   for (i=0; i<MAX; i++) {  //li provo tutti, dalla posizione 0 fino alla posizione 21 (ha poco senso, dato che al massimo posso mettere 10 personaggi per la consegna e quindi sfonderei, però così c'è scritto...) variabile i addetta alla ricerca
+      if (v_anagr[i].eta>=25 &&  v_anagr[i].sesso=='M') { //se l'eta anagrafica è maggiore di 25 e se è uomo
+         v_finale[c].eta=v_anagr[i].eta;  //copio eta
+         strcpy(v_finale[c].nome, v_anagr[i].nome);  //copio nome
+         v_finale[c].sesso='M'; //sesso fissato
+         printf("Cella %d: %s, %c, %d (maschi con piu di 25 anni)\n", c, v_finale[c].nome, v_finale[c].sesso, v_finale[c].eta);
+         c++; //c addetta alla selezione della cella del vettore. infatti c aumenta solo se ho trovato quello che cerco (dentro if)
       }
    }
    return 0;
