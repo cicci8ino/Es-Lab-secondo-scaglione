@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 #define DIM 20
 
 void copiafile (char orig[], char copia[]);
@@ -8,9 +10,9 @@ int main () {
     char nomeoriginale[DIM], nomecopia[DIM];
 
     printf("Inserire nome stringa originale: ");
-    gets(nomeoriginale);
+    fgets(nomeoriginale, sizeof(nomeoriginale), stdin);
     printf("Inserire nome stringa copia: ");
-    gets(nomecopia);
+    fgets(nomecopia, sizeof(nomecopia), stdin);
     copiafile(nomeoriginale, nomecopia);
 }
 
