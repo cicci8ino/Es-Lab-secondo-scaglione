@@ -28,6 +28,7 @@ int main() {
     }
     if (lunghezza!=0) //serve per l'ultima riga di stampa. potrei essere andato a capo prima dell'ultima riga, ma potrei anche non aver più stringhe da stampare.
     fprintf(file1, " %d\n", lunghezza);
+    fclose(file1);
     return 0;
     }
 
