@@ -8,7 +8,7 @@ void genera(char s[]);
 int main() {
 
     FILE *file1;
-    char stringa[DIM];
+    char stringa[DIM+1]; //per il carattere terminatore
     int c, lunghezza=0; //c= contatore per il for, lunghezza= memorizza la lunghezza della riga nel file output
     srand(time(NULL)); //seed random
     if((file1=fopen("output.txt", "w"))==NULL)  { //inizializzo puntatore a file output.txt - sola scrittura
@@ -34,7 +34,7 @@ int main() {
 
 void genera(char s[]) {  //copia incolla dal foglio
    int i, len=rand()%DIM+1;
-   for (i=0; i<len-1; i++) {
+   for (i=0; i<len; i++) {
        s[i]='A' + rand()%('Z'-'A'+1);
    }
    s[i]='\0';

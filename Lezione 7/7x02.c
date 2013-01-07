@@ -1,7 +1,6 @@
 #include <stdio.h>
 #define DIM 20
 
-
 void copiafile (char orig[], char copia[]);
 
 int main () {
