@@ -30,6 +30,7 @@ int main() {
 	printf("\n");
 	scrivimatrice(matrice);
 	leggimatrice();
+	return 0;
 }
 
 int genera() {
