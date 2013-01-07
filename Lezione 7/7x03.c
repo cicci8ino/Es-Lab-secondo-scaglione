@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
 #define DIM 10
 
 void stampamatrice(int matrice[DIM][DIM]);
@@ -38,10 +39,10 @@ int genera() {
 void stampamatrice(int matrice[DIM][DIM]) {
 
     int riga, colonna;
+
     for (riga=0; riga<DIM; riga++) {
-        for (colonna=0; colonna<DIM; colonna++) {
+        for (colonna=0; colonna<DIM; colonna++)
            printf("%d\t", matrice[riga][colonna]);
-        }
         printf("\n");
     }
 }
@@ -50,8 +51,9 @@ void scrivimatrice(int matrice[DIM][DIM]) {
 	
 	FILE *file;
 	char nomefile[15];
+	
 	printf("Dove vuoi salvare il file? ");
-	gets(nomefile);	
+	fgets(nomefile, sizeof(nomefile), stdin);	
 	if ((file=fopen(nomefile, "wb"))==NULL) {
 	   printf("Errore apertura file");
 	   return;
@@ -81,7 +83,7 @@ void leggimatrice() {
 	char nomefile[15];
 	
 	printf("Che file vuoi leggere? ");
-	gets(nomefile);
+	fgets(nomefile, sizeof(nomefile), stdin);
 	if ((file=fopen(nomefile, "rb"))==NULL) {
 		printf("Errore lettura file");
 		return;
